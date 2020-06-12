@@ -14,4 +14,4 @@
 |
 */
 
-Route::apiResource('/question', 'QuestionController@index');
+Route::apiResource('/question', 'QuestionController');
