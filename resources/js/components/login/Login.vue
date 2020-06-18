@@ -20,8 +20,12 @@
          class="mr-4"
          type="submit"
         >Login</v-btn>
+
+     <router-link to="/signup">
+        <v-btn >Sign Up</v-btn>
+      </router-link>
     </v-form>
-  </v-container> 
+  </v-container>
 </template>
 
 <script>
@@ -38,9 +42,7 @@ export default{
     },
     methods:{
         login(){
-            axios.post('/api/auth/login',this.form)
-            .then(res => console.log(res.data))
-            .catch(error => console.log(error.response.data))
+          User.login(this.form)
         }
     }
 }

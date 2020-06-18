@@ -1,19 +1,23 @@
 <template>
     <v-toolbar>
-        <v-toolbar-side-icon></v-toolbar-side-icon>
+        <v-app-bar-nav-icon></v-app-bar-nav-icon>
         <v-toolbar-title>FORUM</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-toolbar-item class="hidden-sm-and-down">
+        <v-toolbar-items class="hidden-sm-and-down">
             <router-link to="/forum">
-            <v-btn flat>Forum</v-btn>
+            <v-btn >Forum</v-btn>
             </router-link>
-            <v-btn flat>Ask Question</v-btn>
-            <v-btn flat>Category</v-btn>
+            <router-link to="/question">
+            <v-btn >Ask Question</v-btn>
+            </router-link>
+             <router-link to="/categories">
+              <v-btn >Category</v-btn>
+            </router-link>
             <router-link to="/login">
-            <v-btn flat>Login</v-btn>
+            <v-btn >Login</v-btn>
             </router-link>
-            
-        </v-toolbar-item>
+
+        </v-toolbar-items>
     </v-toolbar>
 </template>
 
