@@ -35,6 +35,7 @@
          <v-btn
          color="green"
          type="submit"
+         @click="signup()"
         >Sign UP</v-btn>
 
          <router-link to="/login">
@@ -52,18 +53,28 @@ export default{
     data(){
         return{
             form:{
-                name:null,
-                email:null,
-                password:null,
-                password_confirmation:null
+
+                name: '',
+                email: '',
+                password: '',
+                password_confirmation: ''
+
             },
             errors:{}
         }
     },
+    created(){
+        if(User.loggedIn()){
+            this.$router.push({name:'forum'})
+        }
+    },
     methods:{
         signup(){
-            axios.post('/api/auth/signup',this.form)
-            .then(res => User.resultAfterLogin(res))
+            window.axios.post('api/auth/signup', this.form)
+            .then(res => {
+                User.resultAfterLogin(res)
+                this.$router.push({name:'forum'})
+            })
             .catch(error => this.errors = error.response.data.errors)
         }
 
@@ -74,3 +85,5 @@ export default{
 <style>
 
 </style>
+
+

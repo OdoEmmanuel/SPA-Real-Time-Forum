@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Throwable;
+use Exception;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Symfony\Component\HttpFoundation\Response;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
@@ -53,7 +54,7 @@ class Handler extends ExceptionHandler
      *
      * @throws \Throwable
      */
-    public function render($request, Throwable $exception)
+    public function render( $request,  Throwable $exception)
     {
         if($exception instanceof TokenBlacklistedException){
             return response(['error' => 'JWT Token can not been used twice'], Response::HTTP_BAD_REQUEST);

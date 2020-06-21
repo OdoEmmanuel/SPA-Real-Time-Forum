@@ -1,9 +1,12 @@
 <template>
-<div>
+<v-app>
+    <div>
     <toolbar></toolbar>
     <router-view></router-view>
     <app-footer></app-footer>
 </div>
+</v-app>
+
 
 </template>
 
@@ -11,13 +14,16 @@
 import Toolbar from './Toolbar'
 import AppFooter from './AppFooter'
 import Login from './login/Login'
+// import Signup from './login/signup'
+
 
 export default{
     name: 'app',
     components: {
         'toolbar' : Toolbar,
         'app-footer' : AppFooter,
-        'login' : Login
+        'login' : Login,
+        // 'signup': Signup
         }
 }
 </script>

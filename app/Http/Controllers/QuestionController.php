@@ -21,7 +21,7 @@ class QuestionController extends Controller
     {
         $this->middleware('JWT', ['except' => ['index','show']]);
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -45,8 +45,10 @@ class QuestionController extends Controller
         // Implementing the Store Method
 
         //auth()->user()->question()->create($request->all());
-        Question::create($request->all());
-        return response('Created', Response::HTTP_CREATED);
+        //$request['slug'] = $request->title;
+        $question = auth()->user()->question()->create($request->all());
+        // Question::create($request->all());
+        return response(new QuestionResource($question), Response::HTTP_CREATED);
     }
 
     /**
