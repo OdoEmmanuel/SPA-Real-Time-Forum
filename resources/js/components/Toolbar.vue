@@ -1,8 +1,9 @@
 <template>
     <v-toolbar>
-        <v-app-bar-nav-icon></v-app-bar-nav-icon>
+        <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
         <v-toolbar-title>FORUM</v-toolbar-title>
         <v-spacer></v-spacer>
+        <app-notification></app-notification>
         <v-toolbar-items class="hidden-sm-and-down">
 
             <router-link
@@ -18,13 +19,15 @@
 </template>
 
 <script>
+import AppNotification from './AppNotification'
 export default{
+    components:{AppNotification},
     data(){
         return{
             items:[
                 {title: 'Forum', to:'/forum',show:true},
                 {title: 'Ask Question', to:'/ask',show: User.loggedIn()},
-                {title: 'Category', to:'/category',show: User.loggedIn()},
+                {title: 'Category', to:'/category',show: User.admin()},
                 {title: 'Login', to:'/login',show: !User.loggedIn()},
                 {title: 'Logout', to:'/logout',show: User.loggedIn() },
             ]

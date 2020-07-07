@@ -19,7 +19,7 @@ class CategoryController extends Controller
     {
         $this->middleware('JWT', ['except' => ['index','show']]);
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -31,7 +31,7 @@ class CategoryController extends Controller
         return CategoryResource::collection(category::latest()->get());
     }
 
-    
+
 
     /**
      * Store a newly created resource in storage.
@@ -46,9 +46,9 @@ class CategoryController extends Controller
         //Category::create($request->all());
         $category = new Category;
         $category->name = $request->name;
-        $category->slug = str_slug($request->name);
+        $category->slug = $request->name;
         $category->save();
-        return response("Created", Response::HTTP_CREATED);
+        return response(new CategoryResource($category), Response::HTTP_CREATED);
     }
 
     /**
@@ -77,10 +77,10 @@ class CategoryController extends Controller
         $category->update(
             [
                 'name'=>$request->name,
-                'slug'=>str_slug($request->name)
+                'slug'=> $request->name
             ]
         );
-            return response('Updated', Response::HTTP_ACCEPTED);
+            return response(new CategoryResource($category), Response::HTTP_ACCEPTED);
     }
 
     /**
@@ -96,4 +96,3 @@ class CategoryController extends Controller
         return response(null, Response::HTTP_NO_CONTENT);
     }
 }
- 

@@ -11,8 +11,8 @@
 
             <vue-simplemde v-model="form.body" />
             <v-card-actions>
-             <v-btn icon small>
-                 <v-icon color="teal" type="submit">save</v-icon>
+             <v-btn icon small type="submit">
+                 <v-icon color="teal">save</v-icon>
              </v-btn>
              <v-btn icon small @click="cancel">
                  <v-icon color="black">cancel</v-icon>
@@ -23,7 +23,7 @@
        </v-card>
     </v-container>
 </template>
-<<script>
+<script>
 export default {
     props:['data'],
     data() {

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ReplyResource;
 use Symfony\Component\HttpFoundation\Response;
-
+use App\Notifications\NewReplyNotification;
 class ReplyController extends Controller
 {
 
@@ -54,7 +54,9 @@ class ReplyController extends Controller
     {
         //
         $reply = $question->replies()->create($request->all());
-        return response(['reply' => ReplyResource::collection($reply)], Response::HTTP_CREATED);
+        $user = $question->user;
+        $user->notify(new NewReplyNotification($reply));
+        return response(['reply' => new ReplyResource($reply)], Response::HTTP_CREATED);
     }
 
     /**
@@ -106,6 +108,6 @@ class ReplyController extends Controller
     {
         //
         $reply->delete();
-        return response(null, Response::HTTP_NO_CONTENT); 
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }
