@@ -55,7 +55,9 @@ class ReplyController extends Controller
         //
         $reply = $question->replies()->create($request->all());
         $user = $question->user;
-        $user->notify(new NewReplyNotification($reply));
+        if($reply->user_id !== $question->user_id){
+            $user->notify(new NewReplyNotification($reply));
+        }
         return response(['reply' => new ReplyResource($reply)], Response::HTTP_CREATED);
     }
 

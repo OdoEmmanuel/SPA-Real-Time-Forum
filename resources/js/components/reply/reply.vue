@@ -2,7 +2,7 @@
     <div class="mt-3">
         <v-card>
             <v-card-title>
-                <div class="headline">{{data.user}}</div>
+                <div class="headline">{{data.user['name']}}</div>
                 <div class="ml-2">Replied {{data.created_at}}</div>
                 <v-spacer></v-spacer>
                 <like :content = "data"></like>

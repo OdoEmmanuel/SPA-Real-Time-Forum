@@ -3,7 +3,7 @@
         <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
         <v-toolbar-title>FORUM</v-toolbar-title>
         <v-spacer></v-spacer>
-        <app-notification></app-notification>
+        <app-notification v-if="loggedIn"></app-notification>
         <v-toolbar-items class="hidden-sm-and-down">
 
             <router-link
@@ -24,6 +24,7 @@ export default{
     components:{AppNotification},
     data(){
         return{
+            loggedIn: User.loggedIn(),
             items:[
                 {title: 'Forum', to:'/forum',show:true},
                 {title: 'Ask Question', to:'/ask',show: User.loggedIn()},

@@ -25,7 +25,7 @@ export default {
     methods: {
         listen(){
             EventBus.$on('newReply', (reply) => {
-                this.content,unshift(reply);
+                this.content.unshift(reply);
             })
 
              EventBus.$on('deleteReply',(index) => {
