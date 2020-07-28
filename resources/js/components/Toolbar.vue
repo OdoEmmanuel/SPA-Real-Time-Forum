@@ -1,21 +1,22 @@
 <template>
-    <v-toolbar>
-        <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
-        <v-toolbar-title>FORUM</v-toolbar-title>
+    <v-toolbar color="indigo" dark>
+        <v-toolbar-title>
+            <router-link class="white--text" to="/">FORUM</router-link>
+        </v-toolbar-title>
         <v-spacer></v-spacer>
         <app-notification v-if="loggedIn"></app-notification>
-        <v-toolbar-items class="hidden-sm-and-down">
+
+       <div class="hidden-sm-and-down">
 
             <router-link
             v-for="item in items"
             :key="item.title"
             :to="item.to"
-            v-if="item.show"
-            >
-            <v-btn >{{ item.title }}</v-btn>
+            v-if="item.show">
+            <v-btn text>{{item.title}}</v-btn>
             </router-link>
+       </div>
 
-        </v-toolbar-items>
     </v-toolbar>
 </template>
 

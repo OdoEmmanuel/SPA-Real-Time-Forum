@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\QuestionRequest;
 use App\Model\Question;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -30,8 +31,8 @@ class QuestionController extends Controller
     public function index()
     {
         // Implementing the Index Method
-
-        return QuestionResource::collection(Question::latest()->get());
+        ////return Question::latest()->paginate(2);
+        return QuestionResource::collection(Question::latest()->paginate(10));
     }
 
     /**
@@ -40,7 +41,7 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(QuestionRequest $request)
     {
         // Implementing the Store Method
 
